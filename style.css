@@ -1,0 +1,115 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+body {
+  background: linear-gradient(180deg, #f4efe6, #ede6d8);
+  display: flex;
+  flex-direction: column;
+  height: 150vh;
+  margin: 0;
+  font-size: 20px;
+  font-family: 'Raleway';
+  color: #777;
+  padding: 40px 20px;
+}
+
+h1 {
+  color: #444;
+  font-size: 24px;
+}
+
+.container {
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+img {
+  display: none;
+}
+
+#cardImage {
+  display: block;
+  max-width: 420px;
+  margin: 50px auto;
+  height: auto;
+  width: 100%;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  boxshadow: 0 12px 30 px rgba (0,0,0,0.15);
+  border-radius: 12px;
+}
+
+button {
+  padding: 5px 15px;
+  background-color: #bfab9b;
+  color: #555;
+  border: none;
+  border-radius: 24px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #ddd3c8;
+}
+
+.footer {
+  margin-top: 20px;
+  margin-bottom: 60px;
+  font-size: 14px;
+  color: #888;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 30px 0;
+}
+
+body {
+  background-color: #ede6d8;
+  transition: background-color 1s ease;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.whisper {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #999;
+  line-height: 1.6;
+}
+
+.sigil {
+  margin-top: 28px;
+  font-size: 18px;
+  color: rgba (0, 0, 0, 0.15);
+}
+
+.soft-divider {
+  width: 60%;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 30px auto;
+}
+
+#resetBtn {
+  display: none;
+  margin-top: -10px;
+  margin-bottom: 5vh;
+}
+
+.hint {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #999;
+  font-style: italic;
+  display: none;
+}
