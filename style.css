@@ -48,6 +48,7 @@ img {
 
 button {
   max-width: 200px;
+  width: 100%;
   padding: 5px 15px;
   background-color: #bfab9b;
   color: #555;
