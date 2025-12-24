@@ -5,6 +5,7 @@ html, body {
 }
 
 @import url(https://fonts.googleapis.com/css?family=Raleway);
+
 body {
   background-color: #ede6d8;
   display: flex;
@@ -13,23 +14,20 @@ body {
   font-size: 20px;
   font-family: 'Raleway';
   color: #777;
+  transition: background-color 1s ease;
 }
 
 #intro {
   position: fixed;
   inset: 0;
-  
-  background: linear-gradient(180deg, #ede6d8, #efe7dc); 
-  
+  background: linear-gradient(180deg, #ede6d8, #efe7dc);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
   text-align: center;
   padding: 40px 20px;
-  z-index: 9999; 
-
+  z-index: 9999;
   transition: opacity 0.6s ease; 
 }
 
@@ -56,6 +54,7 @@ body {
   background-color: #bfab96;
   color: #555;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 #enterBtn:hover {
@@ -72,6 +71,13 @@ h1 {
   margin:  20px 0;
   font-size: 14px;
   color: #999;
+  animation: colorFade 3s infinite;
+}
+
+@keyframes colorFade {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
 }
 
 .container {
@@ -82,16 +88,6 @@ h1 {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-}
-
-#note {
-  animation: colorFade 3s infinite;
-}
-
-@keyframes colorFade {
-  0% { opacity: 0.7; }
-  50% { opacity: 1;}
-  100% { opacity: 0.7; }
 }
 
 img {
@@ -106,7 +102,7 @@ img {
   width: 100%;
   image-rendering: auto;
   -webkit-backface-visibility: hidden;
-  box-shadow: 0 12px 30 px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
   border-radius: 12px;
 }
 
@@ -122,9 +118,22 @@ button {
   cursor: pointer;
   margin-top: 20px;
   align-items: center;
+  transition: background-color 0.3s ease;
 }
 
-button:hover,
+button:hover {
+  background-color: #ddd3c8;
+}
+
+#resetBtn {
+  display: none;
+  max-width: 80px;
+  width: 100%;
+  margin-top: -10px;
+  margin-bottom: 5vh;
+  transition: background-color 0.3s ease;
+}
+
 #resetBtn:hover {
   background-color: #ddd3c8;
 }
@@ -142,18 +151,6 @@ hr {
   border: none;
   border-top: 1px solid #ddd;
   margin: 30px 0;
-}
-
-body {
-  background-color: #ede6d8;
-  transition: background-color 1s ease;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
 }
 
 .whisper {
@@ -176,14 +173,6 @@ body {
   margin: 30px auto;
 }
 
-#resetBtn {
-  display: none;
-  max-width: 80px;
-  width: 100%;
-  margin-top: -10px;
-  margin-bottom: 5vh;
-}
-
 .hint {
   margin-top: 6px;
   font-size: 13px;
@@ -201,10 +190,6 @@ body {
 
 body.night {
   background-color: #bba5c4;
-}
-
-body.night #resetBtn:hover {
-  background-color: #ddd3c8;
 }
 
 body.night h1,
