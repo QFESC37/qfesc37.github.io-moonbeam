@@ -103,6 +103,7 @@ const cards = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
+
   const intro = document.getElementById("intro");
   const enterBtn = document.getElementById("enterBtn");
 
@@ -115,7 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
         intro.style.display = "none";
       }, 600);
     });
-  
+  }
+
   const todayKey = new Date().toDateString();
 
   const cardImage = document.getElementById("cardImage");
@@ -123,23 +125,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const drawBtn = document.getElementById("drawBtn");
   const resetBtn = document.getElementById("resetBtn");
   const hint = document.getElementById("hint");
-});
 
   function setBackground(isMetaphor) {
-    document.body.style.background = isMetaphor
-      ? "#bba5c4"
-      : "#ede6d8";
-    resetBtn.style.background = isMetaphor
-      ? "#9c89ab"
-      : "#bfab9b";
+    document.body.style.background = isMetaphor ? "#bba5c4" : "#ede6d8";
+    resetBtn.style.background = isMetaphor ? "#9c89ab" : "#bfab9b";
   }
 
   function resetUI() {
     cardImage.style.display = "none";
-    note.textContent = "";
     note.style.display = "none";
+    note.textContent = "";
 
-    drawBtn.textContent = "Receive Your Card";
+    hint.style.display = "none";
+    hint.textContent = "";
+
     drawBtn.style.display = "inline-block";
     resetBtn.style.display = "none";
 
@@ -157,17 +156,17 @@ document.addEventListener("DOMContentLoaded", () => {
     note.textContent = "You've Received Today's Card";
     note.style.display = "block";
 
+    hint.textContent = "Come back tomorrow for a new card.";
+    hint.style.display = "block";
+
     drawBtn.style.display = "none";
     resetBtn.style.display = "inline-block";
 
     setBackground(index >= 75);
-
     return;
-    
-    hint.textContent = "Come back tomorrow for a new card.";
-    hint.style.display = "block";
   }
 
+ 
   drawBtn.addEventListener("click", () => {
     const randomIndex = Math.floor(Math.random() * cards.length);
 
@@ -176,6 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     note.textContent = "You've Received Today's Card";
     note.style.display = "block";
+
     hint.textContent = "Come back tomorrow for a new card.";
     hint.style.display = "block";
 
@@ -191,22 +191,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem(todayKey);
     resetUI();
   });
-  
-  hint.textContent = "";
-  hint.style.display = "none";
 
   resetUI();
 });
-
-  const enterBtn = document.getElementById("enterBtn");
-  const intro = document.getElementById("intro");
-
-  enterBtn.addEventListener("click", () => {
-    intro.style.opacity = "0";
-    intro.style.pointerEvents = "none";
-  }, 600);
-});
-
-  #intro {
-    transition: opacity 0.6s ease;
-}
