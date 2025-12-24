@@ -103,104 +103,79 @@ const cards = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const intro = document.getElementById("intro");
   const enterBtn = document.getElementById("enterBtn");
-
-  if (enterBtn && intro) {
-    enterBtn.addEventListener("click", () => {
-      intro.style.opacity = "0";
-      intro.style.pointerEvents = "none";
-
-      setTimeout(() => {
-        intro.style.display = "none";
-        mainContent.style.display = "block";
-      }, 600);
-    });
-  }
-
-  const todayKey = new Date().toDateString();
+  const mainContent = document.getElementById("mainContent");
 
   const cardImage = document.getElementById("cardImage");
   const note = document.getElementById("note");  
   const drawBtn = document.getElementById("drawBtn");
   const resetBtn = document.getElementById("resetBtn");
   const hint = document.getElementById("hint");
-
-  function setBackground(isMetaphor) {
-  const note = document.getElementById("note");
   const whisper = document.querySelector(".whisper");
   const footer = document.querySelector(".footer");
 
-function setBackground(isMetaphor) {
-  const resetBtn = document.getElementById("resetBtn");
-
-  if (isMetaphor) {
-    document.body.style.background = "#bba5c4";
-    resetBtn.style.background = "#9c89ab";
-
-    document.body.classList.add("night");
-  } else {
-    document.body.style.background = "#ede6d8";
-    resetBtn.style.background = "#bfab9b";
-
-    document.body.classList.remove("night");
+  function setBackground(isMetaphor) {
+    if (isMetaphor) {
+      document.body.style.background = "#bba5c4";
+      resetBtn.style.background = "#9c89ab";
+      document.body.classList.add("night");
+    } else {
+      document.body.style.background = "#ede6d8";
+      resetBtn.style.background = "#bfab9b";
+      document.body.classList.remove("night");
+    }
   }
-}
 
   function resetUI() {
     cardImage.style.display = "none";
     note.style.display = "none";
     note.textContent = "";
-
     hint.style.display = "none";
     hint.textContent = "";
-
     drawBtn.style.display = "inline-block";
     resetBtn.style.display = "none";
-
     setBackground(false);
   }
 
+  const todayKey = new Date().toDateString();
   const savedIndex = localStorage.getItem(todayKey);
 
-  if (savedIndex !== null) {
-    const index = parseInt(savedIndex, 10);
+  if (enterBtn && intro) {
+    enterBtn.addEventListener("click", () => {
+      intro.style.opacity = "0";
+      intro.style.pointerEvents = "none";
+      setTimeout(() => {
+        intro.style.display = "none";
+        mainContent.style.display = "block";
 
-    cardImage.src = cards[index];
-    cardImage.style.display = "block";
-
-    note.textContent = "You've Received Today's Card";
-    note.style.display = "block";
-
-    hint.textContent = "Come back tomorrow for a new card.";
-    hint.style.display = "block";
-
-    drawBtn.style.display = "none";
-    resetBtn.style.display = "inline-block";
-
-    setBackground(index >= 75);
-    return;
+        if (savedIndex !== null) {
+          const index = parseInt(savedIndex, 10);
+          cardImage.src = cards[index];
+          cardImage.style.display = "block";
+          note.textContent = "You've Received Today's Card";
+          note.style.display = "block";
+          hint.textContent = "Come back tomorrow for a new card.";
+          hint.style.display = "block";
+          drawBtn.style.display = "none";
+          resetBtn.style.display = "inline-block";
+          setBackground(index >= 75);
+        }
+      }, 600);
+    });
   }
 
- 
   drawBtn.addEventListener("click", () => {
     const randomIndex = Math.floor(Math.random() * cards.length);
-
     cardImage.src = cards[randomIndex];
     cardImage.style.display = "block";
-
     note.textContent = "You've Received Today's Card";
     note.style.display = "block";
-
     hint.textContent = "Come back tomorrow for a new card.";
     hint.style.display = "block";
-
     localStorage.setItem(todayKey, randomIndex);
-
     drawBtn.style.display = "none";
     resetBtn.style.display = "inline-block";
-
     setBackground(randomIndex >= 75);
   });
 
