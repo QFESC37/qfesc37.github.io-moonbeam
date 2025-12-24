@@ -106,36 +106,10 @@ img {
   border-radius: 12px;
 }
 
-button {
-  max-width: 150px;
-  width: 100%;
-  padding: 5px 15px;
-  background-color: #bfab9b;
-  color: #555;
+hr {
   border: none;
-  border-radius: 24px;
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 20px;
-  align-items: center;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #ddd3c8;
-}
-
-#resetBtn {
-  display: none;
-  max-width: 80px;
-  width: 100%;
-  margin-top: -10px;
-  margin-bottom: 5vh;
-  transition: background-color 0.3s ease;
-}
-
-#resetBtn:hover {
-  background-color: #ddd3c8;
+  border-top: 1px solid #ddd;
+  margin: 30px 0;
 }
 
 .footer {
@@ -145,12 +119,6 @@ button:hover {
   color: #999;
   text-align: center;
   padding-bottom: 50px;
-}
-
-hr {
-  border: none;
-  border-top: 1px solid #ddd;
-  margin: 30px 0;
 }
 
 .whisper {
@@ -179,6 +147,40 @@ hr {
   color: #999;
   font-style: italic;
   display: none;
+}
+
+button {
+  max-width: 150px;
+  width: 100%;
+  padding: 5px 15px;
+  background-color: #bfab9b;
+  color: #555;
+  border: none;
+  border-radius: 24px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 20px;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+#resetBtn {
+  display: none;
+  max-width: 80px;
+  width: 100%;
+  margin-top: -10px;
+  margin-bottom: 5vh;
+}
+
+button:hover,
+#resetBtn:hover,
+body.night button:hover,
+body.night #resetBtn:hover {
+  background-color: #ddd3c8;
+}
+
+#resetBtn:hover {
+  background-color: #ddd3c8;
 }
 
 :root {
