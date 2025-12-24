@@ -117,13 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setBackground(isMetaphor) {
     if (isMetaphor) {
-      document.body.style.background = "#bba5c4";
-      resetBtn.style.background = "#9c89ab";
       document.body.classList.add("night");
-        } else {
-      document.body.style.background = "#ede6d8";
-      resetBtn.style.background = "#bfab9b";
-      document.body.classList.remove("night");  
+    } else {
+      document.body.classList.remove("night");
     }
   }
 
