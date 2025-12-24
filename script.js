@@ -49,7 +49,7 @@ const cards = [
   "https://i.postimg.cc/kXdJv2vh/card48-png.png",
   "https://i.postimg.cc/3rGrGXmD/card49-png.png",
   "https://i.postimg.cc/Z55hwpBX/card50-png.png",
-    "https://i.postimg.cc/NGRYFgwq/card51-png.png",
+  "https://i.postimg.cc/NGRYFgwq/card51-png.png",
   "https://i.postimg.cc/Vv9cVFWx/card52-png.png",
   "https://i.postimg.cc/FRLvjvdk/card53-png.png",
   "https://i.postimg.cc/FK1NH3hG/card54-png.png",
