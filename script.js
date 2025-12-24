@@ -113,8 +113,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setBackground(isMetaphor) {
     document.body.style.background = isMetaphor
-      ? "linear-gradient(180deg, #c6b7d8 70%, #c6b7d8 100%, #bba5c4 0%, #bba5c4 70%)"
-      : "linear-gradient(180deg, #f4efe6 70%, #f4efe6 100%, #ede6d8 0%, #ede6d8 70%)";
+      ? "linear-gradient(180deg, #c6b7d8 70%, #c6b7d8 100%, #bba5c4 0%, #bba5c4 30%)"
+      : "linear-gradient(180deg, #f4efe6 70%, #f4efe6 100%, #ede6d8 0%, #ede6d8 30%)";
     resetBtn.style.background = isMetaphor
       ? "#9c89ab"
       : "#bfab9b";
