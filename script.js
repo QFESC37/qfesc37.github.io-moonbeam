@@ -132,14 +132,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const footer = document.querySelector(".footer");
 
   if (isMetaphor) {
-    document.body.style.background =
-      "linear-gradient(180deg, #c6b7d8 0%, #c6b7d8 70%, #bba5c4 100%)";
-
+    document.body.style.background = "#bba5c4";
     resetBtn.style.background = "#9c89ab";
 
     note?.classList.add("night-text");
     whisper?.classList.add("night-text");
     footer?.classList.add("night-text");
+    hint?.classList.add("night-text");
   } else {
     document.body.style.background = "#ede6d8";
     resetBtn.style.background = "#bfab9b";
@@ -147,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     note?.classList.remove("night-text");
     whisper?.classList.remove("night-text");
     footer?.classList.remove("night-text");
-  }
+    hint?.classList.remove("night-text");  }
 }
 
   function resetUI() {
