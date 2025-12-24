@@ -180,6 +180,34 @@ body {
   display: none;
 }
 
-.night-text {
-  color: #eee9f2;
+:root {
+  --night-title: #f2f2f2;
+  --night-intro: #e6e6e6;
+  --night-soft:  #d6d6d6;
+  --night-faint: rgba(255,255,255,0.35);
+}
+
+body.night {
+  background-color: #bba5c4;
+}
+
+body.night h1 {
+  color: var(--night-title);
+}
+
+body.night .intro {
+  color: var(--night-intro);
+}
+
+body.night .note,
+body.night .whisper,
+body.night .hint,
+body.night .footer {
+  color: var(--night-soft);
+}
+
+body.night .sigil,
+body.night .soft-divider {
+  color: var(--night-faint);
+  border-color: var(--night-faint);
 }
