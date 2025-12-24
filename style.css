@@ -124,7 +124,8 @@ button {
   align-items: center;
 }
 
-button:hover {
+button:hover,
+#resetBtn:hover {
   background-color: #ddd3c8;
 }
 
@@ -200,6 +201,10 @@ body {
 
 body.night {
   background-color: #bba5c4;
+}
+
+body.night #resetBtn:hover {
+  background-color: #ddd3c8;
 }
 
 body.night h1,
