@@ -224,45 +224,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const note = document.getElementById("note");
   const hint = document.getElementById("hint");
 
-  const revealBtn = document.getElementById("revealBtn");
-  const questionText = document.getElementById("questionText");
-
-
-  const submitComment = document.getElementById("submitComment");
-  const nameInput = document.getElementById("nameInput");
-  const messageInput = document.getElementById("messageInput");
-  const commentsList = document.getElementById("commentsList");
-
-  function setBackground(isMetaphor) {
-    if(isMetaphor) document.body.classList.add("night");
-    else document.body.classList.remove("night");
-  }
-
-  function resetDailyCard() {
-    cardImage.style.display = "none";
-    note.textContent = "Your card for today.";
-    note.style.display = "none";
-    hint.textContent = "";
-    hint.style.display = "none";
-    drawBtn.style.display = "inline-block";
-    resetBtn.style.display = "none";
-    setBackground(false);
-  }
-
-
-  menu.style.display = "flex";
-  dailyCard.style.display = "none";
-  whisperBox.style.display = "none";
-
   enterBtn.addEventListener("click", () => {
     intro.style.opacity = "0";
     intro.style.pointerEvents = "none";
-    setTimeout(()=> {
+    setTimeout(() => {
       intro.style.display = "none";
       menu.style.display = "flex";
-    },600);
+    }, 600);
   });
-
 
   menuCard.addEventListener("click", () => {
     menu.style.display = "none";
@@ -275,28 +244,9 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.style.display = "flex";
   });
 
-  drawBtn.addEventListener("click", () => {
-    const idx = Math.floor(Math.random() * cards.length);
-    cardImage.src = cards[idx];
-    cardImage.style.display = "block";
-    note.textContent = "You've Received Today's Card";
-    note.style.display = "block";
-    hint.textContent = "Come back tomorrow for a new card.";
-    hint.style.display = "block";
-    drawBtn.style.display = "none";
-    resetBtn.style.display = "inline-block";
-    setBackground(idx >= 75);
-  });
-
-  resetBtn.addEventListener("click", resetDailyCard);
-
-  resetDailyCard();
-  }); 
-
-
   menuQuestion.addEventListener("click", () => {
     menu.style.display = "none";
-    whisperBox.style.display = "block";
+    whisperBox.style.display = "flex";
   });
 
   backToMenuWhisper.addEventListener("click", () => {
@@ -304,21 +254,29 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.style.display = "flex";
   });
 
-  revealBtn.addEventListener("click", () => {
-    const idx = Math.floor(Math.random() * questions.length);
-    questionText.textContent = questions[idx];
+  function resetDailyCard() {
+    cardImage.style.display = "none";
+    note.textContent = "Your card for today.";
+    note.style.display = "block";
+    hint.textContent = "";
+    hint.style.display = "none";
+    drawBtn.style.display = "inline-block";
+    resetBtn.style.display = "none";
+    document.body.classList.remove("night");
+  }
+
+  drawBtn.addEventListener("click", () => {
+    const idx = Math.floor(Math.random() * cards.length);
+    cardImage.src = cards[idx];
+    cardImage.style.display = "block";
+    note.textContent = "You've Received Today's Card";
+    hint.textContent = "Come back tomorrow for a new card.";
+    drawBtn.style.display = "none";
+    resetBtn.style.display = "inline-block";
+    if(idx >= 75) document.body.classList.add("night");
   });
 
+  resetBtn.addEventListener("click", resetDailyCard);
 
-  submitComment.addEventListener("click", () => {
-    const name = nameInput.value.trim() || "Anonymous";
-    const message = messageInput.value.trim();
-    if(message){
-      const div = document.createElement("div");
-      div.textContent = `${name}: ${message}`;
-      commentsList.prepend(div);
-      messageInput.value = "";
-      nameInput.value = "";
-    }
-  });
+  resetDailyCard();
 });
