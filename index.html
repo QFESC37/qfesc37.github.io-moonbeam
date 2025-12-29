@@ -11,107 +11,76 @@
 <body>
   <div id="intro">
     <h1>Welcome, my moonbeam ⏾</h1>
-
     <p class="intro-text">
       You might be wondering what this is.<br>
       I won't explain it just yet.<br>
-      Some things are better felt than told.</p>
-
+      Some things are better felt than told.
+    </p>
     <button id="enterBtn">Step inside</button>
   </div>  
 
-<div id="menu" style="display:none;">
-  <div class="menu-grid">
+  <div id="menu" style="display:none;">
+    <div class="menu-grid">
+      <button class="menu-item" id="menuCard">
+        <img src="https://i.postimg.cc/gj7TQhGr/cardwhisper-png.png" alt="Daily Card">
+        <span>Daily Card</span>
+      </button>
 
-    <button class="menu-item" id="menuCard">
-      <img src="https://i.postimg.cc/gj7TQhGr/cardwhisper-png.png" alt="Daily Card">
-      <span>Daily Card</span>
-    </button>
+      <button class="menu-item" id="menuQuestion">
+        <img src="https://i.postimg.cc/0QngWr6S/whisperbox-png.png" alt="Whisper Box">
+        <span>Whisper Box</span>
+      </button>
 
-    <button class="menu-item" id="menuQuestion">
-      <img src="https://i.postimg.cc/0QngWr6S/whisperbox-png.png" alt="Whisper Box">
-      <span>Whisper Box</span>
-    </button>
-
-    <button class="menu-item id="menuBlank">
-      <img src="https://i.postimg.cc/2ytKMWCw/blankwhisper-png.png" alt="Stay tuned">
-      <span>Stay tuned</span>
-    </button>
-
-    <button class="back-btn" onclick="goToMenu()">← Menu</button>
+      <button class="menu-item" id="menuBlank">
+        <img src="https://i.postimg.cc/2ytKMWCw/blankwhisper-png.png" alt="Stay tuned">
+        <span>Stay tuned</span>
+      </button>
+    </div>
   </div>
-</div> 
         
-<div id="mainContent" style="display:none;">
-  <button id="backToMenu" class="back-btn">← Menu</button>
-  
-<div class="card-frame">
-
-<p class="note">Your card for today.</p> 
-
-<div class="container">
-  <h1>Daily Card</h1>
-  <p class="intro">
-    A small daily reminder that you're loved, even from afar.<br>
-    Tap the button and receive a card.
-</p>
-  
-  <p class="whisper">
-    This space is yours.<br>
-    Come back whenever you need a little warmth.
-</p>
-  
-  <div class="sigil">✦</div>
-  
-  <img id="cardImage" />
-  
-  <hr class="soft-divider">
-  
-  <button id="drawBtn">Receive Your Card</button>
-  <button id="resetBtn">Home</button>
-    
-    
-  <p id="note"></p>
-  <p id="hint" class="hint"></p>
-</div> 
-  
-  <p class="footer">
-  Even when we are apart,<br>
-  this is my way of reaching you.
-</p>    
-</div>
-
-<section id="whisperBox" class="page hidden">
-  <button class="back-btn" onclick="goToMenu()">← Menu</button>
-
-  <div class="whisper-container">
-    <h1>Whisper Box</h1>
-    <p class="whisper-sub">
-      A question meant to be asked softly.
-    </p>
-
-    <div id="questionBox" class="question-box">
-      <p id="questionText">Tap when you are ready.</p>
-    </div>
-
-    <button id="revealBtn" onclick="revealQuestion()">
-      Reveal a Question
-    </button>
-
-    <div id="formWrapper" class="form-wrapper hidden">
-      <iframe
-        src="YOUR_GOOGLE_FORM_EMBED_URL"
-        width="100%"
-        height="420"
-        frameborder="0"
-        loading="lazy">
-      </iframe>
+  <div id="dailyCard" class="mainContent" style="display:none;">
+    <button id="backToMenu1" class="back-btn">← Menu</button>
+    <div class="container">
+      <h1>Daily Card</h1>
+      <p class="intro">
+        A small daily reminder that you're loved, even from afar.<br>
+        Tap the button and receive a card.
+      </p>
+      <p class="whisper">
+        This space is yours.<br>
+        Come back whenever you need a little warmth.
+      </p>
+      <div class="sigil">✦</div>
+      <img id="cardImage" />
+      <hr class="soft-divider">
+      <button id="drawBtn">Receive Your Card</button>
+      <button id="resetBtn">Home</button>
+      <p id="note"></p>
+      <p id="hint" class="hint"></p>
+      <p class="footer">
+        Even when we are apart,<br>
+        this is my way of reaching you.
+      </p>
     </div>
   </div>
-</section>
-  
-<script src="script.js"></script>
-</body> 
-</html>
 
- 
+  <div id="whisperBox" class="mainContent" style="display:none;">
+    <button id="backToMenu2" class="back-btn">← Menu</button>
+    <div class="whisper-container">
+      <h1>Whisper Box</h1>
+      <p class="whisper-sub">
+        A question meant to be asked softly.
+      </p>
+      <div id="questionBox" class="question-box">
+        <p id="questionText">Tap when you are ready.</p>
+      </div>
+      <button id="revealBtn">Reveal a Question</button>
+      <div id="formWrapper" class="form-wrapper hidden">
+        <iframe src="YOUR_GOOGLE_FORM_EMBED_URL" width="100%" height="420" frameborder="0" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
