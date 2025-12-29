@@ -165,7 +165,7 @@ h1 {
 
 button {
   width: auto;
-  max-width: 150px; /* ขนาดเดิมสำหรับ Receive Your Card */
+  max-width: 150px;
   padding: 6px 16px;
   background-color: #bfab9b;
   color: #555;
@@ -228,6 +228,7 @@ body.night {
   background-color: #bba5c4;
 }
 
+body.night .back-btn,
 body.night h1,
 body.night .note,
 body.night .container p {
