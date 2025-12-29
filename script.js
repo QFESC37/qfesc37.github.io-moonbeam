@@ -169,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
     note.style.display = "block";
     hint.textContent = "Come back tomorrow for a new card.";
     hint.style.display = "block";
+    note.classList.add = ("is-active");
     localStorage.setItem(todayKey, randomIndex);
     drawBtn.style.display = "none";
     resetBtn.style.display = "inline-block";
@@ -177,7 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   resetBtn.addEventListener("click", () => {
     localStorage.removeItem(todayKey);
-    resetUI();
+    resetUI()
+      note.classList.remove = ("is-active");
   });
 
   resetUI();
