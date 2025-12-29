@@ -105,7 +105,10 @@ const cards = [
 document.addEventListener("DOMContentLoaded", () => {
   const intro = document.getElementById("intro");
   const enterBtn = document.getElementById("enterBtn");
+  const menu = document.getElementById("menu");
+  const menuCard = document.getElementById("menuCard");
   const mainContent = document.getElementById("mainContent");
+  const backToMenu = document.getElementById("backToMenu");
 
   const cardImage = document.getElementById("cardImage");
   const note = document.getElementById("note");  
@@ -141,9 +144,17 @@ document.addEventListener("DOMContentLoaded", () => {
     enterBtn.addEventListener("click", () => {
       intro.style.opacity = "0";
       intro.style.pointerEvents = "none";
+      
       setTimeout(() => {
         intro.style.display = "none";
-        mainContent.style.display = "block";
+        menu.style.display = "block";
+      }, 600);
+    });
+
+  menuCard.addEventListener("click", () => {
+    menu.style.display = "none";
+    mainContent.style.display = "block";
+    });  
 
         if (savedIndex !== null) {
           const index = parseInt(savedIndex, 10);
@@ -160,6 +171,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 600);
     });
   }
+
+  backToMenu.addEventListener("click", () => {
+    mainContent.style.display = "none";
+    menu.style.display = "block";
+  });
 
   drawBtn.addEventListener("click", () => {
     const randomIndex = Math.floor(Math.random() * cards.length);
