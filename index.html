@@ -1,83 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CardWhisper - A Card a Day</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CardWhisper - A Card a Day</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <div id="intro">
-    <h1>Welcome, my moonbeam ⏾</h1>
-    <p class="intro-text">
-      You might be wondering what this is.<br>
-      I won't explain it just yet.<br>
-      Some things are better felt than told.
-    </p>
-    <button id="enterBtn">Step inside</button>
-  </div>
+<div id="intro">
+  <h1>Welcome, my moonbeam ⏾</h1>
+  <p class="intro-text">
+    You might be wondering what this is.<br>
+    I won't explain it just yet.<br>
+    Some things are better felt than told.
+  </p>
+  <button id="enterBtn">Step inside</button>
+</div>
 
-  <div id="menu">
-    <div class="menu-grid">
-      <button class="menu-item" id="menuCard">
-        <img src="https://i.postimg.cc/gj7TQhGr/cardwhisper-png.png" alt="Daily Card">
-        <span>Daily Card</span>
-      </button>
-      <button class="menu-item" id="menuQuestion">
-        <img src="https://i.postimg.cc/0QngWr6S/whisperbox-png.png" alt="Whisper Box">
-        <span>Whisper Box</span>
-      </button>
-      <button class="menu-item" id="menuBlank">
-        <img src="https://i.postimg.cc/2ytKMWCw/blankwhisper-png.png" alt="Stay tuned">
-        <span>Stay tuned</span>
-      </button>
+<div id="menu">
+  <div class="menu-grid">
+    <button class="menu-item" id="menuCard">
+      <img src="https://i.postimg.cc/gj7TQhGr/cardwhisper-png.png" alt="Daily Card">
+      <span>Daily Card</span>
+    </button>
+    <button class="menu-item" id="menuQuestion">
+      <img src="https://i.postimg.cc/0QngWr6S/whisperbox-png.png" alt="Whisper Box">
+      <span>Whisper Box</span>
+    </button>
+    <button class="menu-item" id="menuBlank">
+      <img src="https://i.postimg.cc/2ytKMWCw/blankwhisper-png.png" alt="Stay tuned">
+      <span>Stay tuned</span>
+    </button>
+  </div>
+</div>
+
+<div id="dailyCard" class="page">
+  <div class="card-frame">
+    <div class="container">
+      <button id="backToMenuCard" class="back-btn">← Menu</button>
+      <h1>Daily Card</h1>
+      <p class="intro">
+        A small daily reminder that you're loved, even from afar.<br>
+        Tap the button and receive a card.
+      </p>
+      <div class="sigil">✦</div>
+      <img id="cardImage" />
+      <hr class="soft-divider">
+      <button id="drawBtn">Receive Your Card</button>
+      <button id="resetBtn">Reset</button>
+      <p id="note">Your card for today.</p>
+      <p id="hint" class="hint"></p>
+      <p class="footer">
+        Even when we are apart,<br>
+        this is my way of reaching you.
+      </p>
     </div>
   </div>
+</div>
 
-  <div id="dailyCard" class="page">
-    <div class="card-frame">
-      <div class="container">
-        <button id="backToMenuCard" class="back-btn">← Menu</button>
-        <h1>Daily Card</h1>
-        <p class="intro">
-          A small daily reminder that you're loved, even from afar.<br>
-          Tap the button and receive a card.
-        </p>
-        <div class="sigil">✦</div>
-        <img id="cardImage" />
-        <hr class="soft-divider">
-        <button id="drawBtn">Receive Your Card</button>
-        <button id="resetBtn">Home</button>
-        <p id="note"></p>
-        <p id="hint" class="hint"></p>
-        <p class="footer">
-          Even when we are apart,<br>
-          this is my way of reaching you.
-        </p>
-      </div>
+<section id="whisperBox" class="page">
+  <button class="back-btn" id="backToMenuWhisper">← Menu</button>
+  <div class="whisper-container">
+    <h1>Whisper Box</h1>
+    <p class="whisper-sub">A question meant to be asked softly.</p>
+    <div id="questionBox" class="question-box">
+      <p id="questionText">Tap when you are ready.</p>
     </div>
+    <button id="revealBtn">Reveal a Question</button>
+    <div class="comment-form">
+      <input type="text" id="nameInput" placeholder="Your name (optional)">
+      <textarea id="messageInput" placeholder="Leave your whisper here..."></textarea>
+      <button id="submitComment">Send</button>
+    </div>
+    <div id="commentsList" class="comments-list"></div>
   </div>
+</section>
 
-  <section id="whisperBox" class="page">
-    <button class="back-btn" id="backToMenuWhisper">← Menu</button>
-    <div class="whisper-container">
-      <h1>Whisper Box</h1>
-      <p class="whisper-sub">A question meant to be asked softly.</p>
-      <div id="questionBox" class="question-box">
-        <p id="questionText">Tap when you are ready.</p>
-      </div>
-      <button id="revealBtn">Reveal a Question</button>
-      <div class="comment-form">
-        <input type="text" id="nameInput" placeholder="Your name (optional)">
-        <textarea id="messageInput" placeholder="Leave your whisper here..."></textarea>
-        <button id="submitComment">Send</button>
-      </div>
-      <div id="commentsList" class="comments-list"></div>
-    </div>
-  </section>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
