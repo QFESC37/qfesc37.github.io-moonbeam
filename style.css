@@ -90,7 +90,6 @@ body {
   color: #555;
 }
 
-
 .menu-item:hover img {
   opacity: 1;
   transform: translateY(-2px);
@@ -98,11 +97,6 @@ body {
 
 .menu-item:hover span {
   color: #333;
-}
-
-.menu-item.disabled {
-  pointer-events: none;
-  opacity: 0.4;
 }
 
 .note {
@@ -121,7 +115,7 @@ h1 {
 .back-btn {
   position:: absolue
   top: 20px;
-  left 20px;
+  left 10px;
   margin: 20px 0;
   background: none;
   border: none;
