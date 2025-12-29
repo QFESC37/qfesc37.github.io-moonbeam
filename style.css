@@ -203,7 +203,14 @@ button:hover {
   padding-bottom: 20px;
 }
 
-.whisper,
+.whisper {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #999;
+  line-height: 1.6;
+  text-align: center;
+}
+  
 .hint {
   font-size: 13px;
   color: #999;
