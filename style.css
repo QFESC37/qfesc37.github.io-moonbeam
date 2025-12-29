@@ -1,41 +1,317 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 @import url("https://fonts.googleapis.com/css2?family=Jost");
 
-* { box-sizing: border-box; }
-html, body { height: 100%; margin:0; padding:0; }
-body { font-family:'Raleway'; background:#ede6d8; color:#777; font-size:20px; transition: background-color 1s ease; }
-.page { display:none; }
-.page.active { display:flex; justify-content:center; padding:20px 0; min-height:100vh; }
+* {
+  box-sizing: border-box;
+}
 
-#intro { position:fixed; inset:0; background:linear-gradient(180deg,#ede6d8,#efe7dc); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px 20px; z-index:9999; transition: opacity 0.6s ease; }
-.intro-text { font-size:16px; line-height:1.6; margin-bottom:30px; max-width:320px; }
-#enterBtn { padding:8px 24px; font-size:14px; border-radius:24px; border:none; background-color:#bfab96; color:#555; cursor:pointer; }
-#enterBtn:hover { background-color:#ddd3c8; }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
-#menu { min-height:100vh; display:none; justify-content:center; align-items:center; padding-top:80px; z-index:1; }
-.menu-grid { display:flex; flex-direction:column; gap:36px; align-items:center; }
-.menu-item { background:#e0dfdc; border-radius:16px; padding:12px 24px; display:flex; flex-direction:column; align-items:center; cursor:pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-.menu-item img { width:90px; height:auto; margin-bottom:6px; }
-.menu-item span { font-size:14px; color:#555; }
-.menu-item:hover { transform:translateY(-4px); box-shadow:0 6px 12px rgba(0,0,0,0.15); background:#e0dfdc; }
-.menu-item:hover span { color:#333; }
+body {
+  font-family: 'Raleway';
+  background-color: #ede6d8;
+  color: #777;
+  font-size: 20px;
+  transition: background-color 1s ease;
+}
 
-.back-btn { position:absolute; top:20px; left:16px; background:none; border:none; color:#777; font-size:14px; cursor:pointer; }
-.back-btn:hover { color:#444; text-decoration:underline; }
-.container { max-width:420px; margin:0 auto; text-align:center; display:flex; flex-direction:column; align-items:center; }
-#cardImage { display:none; max-width:260px; width:100%; margin:40px auto; border-radius:12px; box-shadow:0 12px 30px rgba(0,0,0,0.15); }
-button { font-family:'Jost'; width:auto; max-width:150px; padding:6px 16px; background-color:#bfab9b; color:#555; border:none; border-radius:24px; font-size:14px; cursor:pointer; margin-top:20px; transition: background-color 0.3s ease; }
-button:hover { background-color:#ddd3c8; }
-#drawBtn { padding:5px 12px; font-size:14px; margin-bottom:40px; }
-#resetBtn { display:none; max-width:80px; width:100%; margin-top:-10px; margin-bottom:5vh; background-color:#bfab9b; }
+#intro {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #ede6d8, #efe7dc);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  z-index: 9999;
+  transition: opacity 0.6s ease;
+}
 
-.footer { margin-top:auto; font-size:14px; color:#999; text-align:center; padding-bottom:20px; }
-.sigil { margin-top:28px; font-size:18px; color:rgba(0,0,0,0.15); }
-.soft-divider { width:60%; border:none; border-top:1px solid rgba(0,0,0,0.15); margin:30px auto; }
+.intro-text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 320px;
+}
 
-:root { --night-title:#f2f2f2; --night-soft:#d6d6d6; --night-faint:rgba(255,255,255,0.35); }
-body.night #dailyCard h1, body.night #dailyCard p, body.night #dailyCard .back-btn { color: var(--night-title); }
-body.night #dailyCard .footer, body.night #dailyCard .hint { color: var(--night-soft); }
-body.night #dailyCard .sigil, body.night #dailyCard .soft-divider { color: var(--night-faint); border-color: var(--night-faint); }
-body.night #resetBtn { background-color:#9c89ab; color:#fff; }
-body.night #resetBtn:hover { background-color:#b59bc1; }
+#enterBtn {
+  padding: 8px 24px;
+  font-size: 14px;
+  border-radius: 24px;
+  border: none;
+  background-color: #bfab96;
+  color: #555;
+  cursor: pointer;
+}
+
+#enterBtn:hover {
+  background-color: #ddd3c8;
+}
+
+#menu {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.menu-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: center;
+}
+
+.menu-item {
+  background: #fff
+  border-radius: 16px;
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-item img {
+  width: 90px;
+  height: auto;
+  margin-bottom: 6px;
+}
+
+.menu-item span {
+  font-size: 14px;
+  color: #555;
+}
+
+.menu-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.menu-item:hover span {
+  color: #333;
+}
+
+#mainContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+  background: none;
+  border: none;
+  color: #777;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  color: #444;
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 24px;
+  color: #444;
+}
+
+.note {
+  margin: 20px 0;
+  font-size: 14px;
+  text-align: center;
+  color: #555;
+}
+
+.note.is-active {
+  animation: colorFade 1s infinite;
+}
+
+@keyframes colorFade {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.container {
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cardImage {
+  display: none;
+  max-width: 260px;
+  width: 100%;
+  margin: 40px auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+button {
+  font-family: 'Jost';
+  width: auto;
+  max-width: 150px;
+  padding: 6px 16px;
+  background-color: #bfab9b;
+  color: #555;
+  border: none;
+  border-radius: 24px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ddd3c8;
+}
+
+#drawBtn {
+  padding: 5px 12px;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+#resetBtn {
+  display: none;
+  max-width: 80px;
+  width: 100%;
+  margin-top: -10px;
+  margin-bottom: 5vh;
+  background-color: #bfab9b;
+}
+
+.footer {
+  margin-top: auto;
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.whisper {
+  margin-top: 48px;
+  font-size: 13px;
+  color: #999;
+  line-height: 1.6;
+  text-align: center;
+}
+  
+.hint {
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+}
+
+.sigil {
+  margin-top: 28px;
+  font-size: 18px;
+  color: rgba(0,0,0,0.15);
+}
+
+.soft-divider {
+  width: 60%;
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.15);
+  margin: 30px auto;
+}
+
+:root {
+  --night-title: #f2f2f2;
+  --night-soft: #d6d6d6;
+  --night-faint: rgba(255,255,255,0.35);
+}
+
+body.night {
+  background-color: #bba5c4;
+}
+
+body.night .back-btn,
+body.night h1,
+body.night .note,
+body.night .container p {
+  color: var(--night-title);
+}
+
+body.night .whisper,
+body.night .footer,
+body.night .hint {
+  color: var(--night-soft);
+}
+
+body.night .sigil,
+body.night .soft-divider {
+  color: var(--night-faint);
+  border-color: var(--night-faint);
+}
+
+body.night #resetBtn {
+  background-color: #9c89ab;
+  color: #fff;
+}
+
+body.night #resetBtn:hover {
+  background-color: #b59bc1;
+}
+
+.whisper-container {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 80px 20px 60px;
+  text-align: center;
+}
+
+.whisper-sub {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 40px;
+}
+
+.question-box {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.45);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+}
+
+#questionText {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+#revealBtn {
+  max-width: 160px;
+}
+
+.form-wrapper {
+  margin-top: 40px;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
