@@ -58,6 +58,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 80px; /* เพิ่มเว้นด้านบน */
 }
 
 .menu-grid {
@@ -68,25 +69,30 @@ body {
 }
 
 .menu-item {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+  background: #fff
+  border-radius: 16px;
+  padding: 12px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .menu-item img {
   width: 90px;
   height: auto;
-  display: block;
   margin-bottom: 6px;
 }
 
 .menu-item span {
   font-size: 14px;
   color: #555;
+}
+
+.menu-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .menu-item:hover span {
@@ -97,6 +103,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+  padding: 20px 0;
 }
 
 .back-btn {
@@ -123,8 +131,8 @@ h1 {
 .note {
   margin: 20px 0;
   font-size: 14px;
-  color: #999;
   text-align: center;
+  color: #555;
 }
 
 .note.is-active {
@@ -156,8 +164,8 @@ h1 {
 }
 
 button {
-  max-width: 150px;
-  width: 100%;
+  width: auto;
+  max-width: 150px; /* ขนาดเดิมสำหรับ Receive Your Card */
   padding: 6px 16px;
   background-color: #bfab9b;
   color: #555;
@@ -166,6 +174,7 @@ button {
   font-size: 14px;
   cursor: pointer;
   margin-top: 20px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -175,10 +184,21 @@ button:hover {
 #resetBtn {
   display: none;
   max-width: 80px;
+  width: 100%;
+  margin-top: -10px;
+  margin-bottom: 5vh;
+  background-color: #bfab9b;
+}
+
+.footer {
+  margin-top: auto;
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  padding-bottom: 20px;
 }
 
 .whisper,
-.footer,
 .hint {
   font-size: 13px;
   color: #999;
@@ -209,7 +229,8 @@ body.night {
 }
 
 body.night h1,
-body.night .note {
+body.night .note,
+body.night .container p {
   color: var(--night-title);
 }
 
