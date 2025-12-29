@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function resetDailyCard() {
     cardImage.style.display = "none";
-    note.textContent = "";
+    note.textContent = "Your card for today.";
     note.style.display = "none";
     hint.textContent = "";
     hint.style.display = "none";
@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  menu.style.display = "none";
+  menu.style.display = "flex";
   dailyCard.style.display = "none";
   whisperBox.style.display = "none";
 
@@ -285,10 +285,13 @@ document.addEventListener("DOMContentLoaded", () => {
     hint.style.display = "block";
     drawBtn.style.display = "none";
     resetBtn.style.display = "inline-block";
-    setBackground(idx >= 2);
+    setBackground(idx >= 75);
   });
 
   resetBtn.addEventListener("click", resetDailyCard);
+
+  resetDailyCard();
+  }); 
 
 
   menuQuestion.addEventListener("click", () => {
