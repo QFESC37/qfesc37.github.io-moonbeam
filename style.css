@@ -61,11 +61,55 @@ body {
   background-color: #ddd3c8;
 }
 
+.menu {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 720px;
+  width: 100%;
+  padding: 20px;
+}
+
+.menu-item img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+.menu-item span {
+  display: block;
+  font-size: 14px;
+  color: #555;
+}
+
+
+.menu-item:hover img {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.menu-item:hover span {
+  color: #333;
+}
+
+.menu-item.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
 .note {
   align-items: center;  
   text-align: center;
   margin:  20px 0;
-  font-size: 14px;
+  font-size: 16px;
   color: #999;
 }
 
@@ -74,13 +118,27 @@ h1 {
   font-size: 24px;
 }
 
+.back-btn {
+  align-self: flex-start;
+  margin: 20px 0;
+  background: none;
+  border: none;
+  color: #777;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  color: #444;
+  text-decoration: underline;
+}
 
 .note.is-active {
   text-align: center;
   margin:  20px 0;
   font-size: 14px;
   color: #999;
-  animation: colorFade 3s infinite;
+  animation: colorFade 1s infinite;
 }
 
 @keyframes colorFade {
