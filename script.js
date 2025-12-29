@@ -102,31 +102,7 @@ const questions = [
 ];
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  const intro = document.getElementById("intro");
-  const enterBtn = document.getElementById("enterBtn");
-
-  const menu = document.getElementById("menu");
-  const menuCard = document.getElementById("menuCard");
-  const menuQuestion = document.getElementById("menuQuestion");
-
-  const dailyCard = document.getElementById("dailyCard");
-  const backToMenu1 = document.getElementById("backToMenu1");
-
-  const whisperBox = document.getElementById("whisperBox");
-  const backToMenu2 = document.getElementById("backToMenu2");
-
-  const cardImage = document.getElementById("cardImage");
-  const note = document.getElementById("note");
-  const hint = document.getElementById("hint");
-  const drawBtn = document.getElementById("drawBtn");
-  const resetBtn = document.getElementById("resetBtn");
-
-  const revealBtn = document.getElementById("revealBtn");
-  const questionText = document.getElementById("questionText");
-  const formWrapper = document.getElementById("formWrapper");
-
-  const cards = [
+const cards = [
   "https://i.postimg.cc/Zn6Thm4g/card01-png.png",
   "https://i.postimg.cc/W1YcCz03/card02-png.png",
   "https://i.postimg.cc/pVKxr2tP/card03-png.png",
@@ -231,91 +207,101 @@ document.addEventListener("DOMContentLoaded", () => {
 ];
 
 
-  const todayKey = new Date().toDateString();
-  const savedIndex = localStorage.getItem(todayKey);
+document.addEventListener("DOMContentLoaded", () => {
+  const intro = document.getElementById("intro");
+  const enterBtn = document.getElementById("enterBtn");
+  const menu = document.getElementById("menu");
+  const menuCard = document.getElementById("menuCard");
+  const menuQuestion = document.getElementById("menuQuestion");
+  const menuBlank = document.getElementById("menuBlank");
+  const mainContent = document.getElementById("mainContent");
+  const resetBtn = document.getElementById("resetBtn");
+  const drawBtn = document.getElementById("drawBtn");
+  const cardImage = document.getElementById("cardImage");
+  const note = document.getElementById("note");
+  const hint = document.getElementById("hint");
+  const whisperBox = document.getElementById("whisperBox");
 
-  function showMenu() {
-    dailyCard.style.display = "none";
-    whisperBox.style.display = "none";
-    menu.style.display = "flex";
-  }
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const nameInput = document.getElementById("nameInput");
+  const messageInput = document.getElementById("messageInput");
+  const submitBtn = document.getElementById("submitComment");
+  const commentsList = document.getElementById("commentsList");
 
-  function resetDailyCard() {
-    cardImage.style.display = "none";
-    note.style.display = "none";
-    note.textContent = "";
-    hint.style.display = "none";
-    hint.textContent = "";
-    drawBtn.style.display = "inline-block";
-    resetBtn.style.display = "none";
-    document.body.classList.remove("night");
-  }
+  function setBackground(isMetaphor){document.body.classList.toggle("night",isMetaphor);}
+  function resetUI(){ cardImage.style.display="none"; note.style.display="none"; note.textContent=""; hint.style.display="none"; hint.textContent=""; drawBtn.style.display="inline-block"; resetBtn.style.display="none"; setBackground(false); }
 
-  enterBtn.addEventListener("click", () => {
-    intro.style.opacity = 0;
-    intro.style.pointerEvents = "none";
-    setTimeout(() => {
-      intro.style.display = "none";
-      showMenu();
-    }, 600);
+  menu.style.display="none";
+  mainContent.style.display="none";
+  whisperBox.classList.add("hidden");
+
+  enterBtn.addEventListener("click",()=>{
+    intro.style.opacity="0"; intro.style.pointerEvents="none";
+    setTimeout(()=>{ intro.style.display="none"; menu.style.display="block"; },600);
   });
 
-  menuCard.addEventListener("click", () => {
-    menu.style.display = "none";
-    dailyCard.style.display = "flex";
-    resetDailyCard();
-
-    if (savedIndex !== null) {
-      const index = parseInt(savedIndex, 10);
-      cardImage.src = cards[index];
-      cardImage.style.display = "block";
-      note.textContent = "You've Received Today's Card";
-      note.style.display = "block";
-      note.classList.add("is-active");
-      hint.textContent = "Come back tomorrow for a new card.";
-      hint.style.display = "block";
-      drawBtn.style.display = "none";
-      resetBtn.style.display = "inline-block";
-      if (index >= 75) document.body.classList.add("night");
+  menuCard.addEventListener("click",()=>{
+    menu.style.display="none";
+    mainContent.style.display="block";
+    resetUI();
+    const todayKey = new Date().toDateString();
+    const savedIndex = localStorage.getItem(todayKey);
+    if(savedIndex!==null){
+      const index = parseInt(savedIndex,10);
+      cardImage.src=cards[index]; cardImage.style.display="block";
+      note.textContent="You've Received Today's Card"; note.style.display="block"; note.classList.add("is-active");
+      hint.textContent="Come back tomorrow for a new card."; hint.style.display="block";
+      drawBtn.style.display="none"; resetBtn.style.display="inline-block";
+      setBackground(index>=75);
     }
   });
 
-  menuQuestion.addEventListener("click", () => {
-    menu.style.display = "none";
-    whisperBox.style.display = "flex";
-    questionText.textContent = "Tap when you are ready.";
-    formWrapper.classList.add("hidden");
+  resetBtn.addEventListener("click",()=>{
+    mainContent.style.display="none"; menu.style.display="block";
   });
 
-  backToMenu1.addEventListener("click", showMenu);
-  backToMenu2.addEventListener("click", showMenu);
-
-  drawBtn.addEventListener("click", () => {
-    const randomIndex = Math.floor(Math.random() * cards.length);
-    cardImage.src = cards[randomIndex];
-    cardImage.style.display = "block";
-    note.textContent = "You've Received Today's Card";
-    note.style.display = "block";
-    note.classList.add("is-active");
-    hint.textContent = "Come back tomorrow for a new card.";
-    hint.style.display = "block";
-    localStorage.setItem(todayKey, randomIndex);
-    drawBtn.style.display = "none";
-    resetBtn.style.display = "inline-block";
-    if (randomIndex >= 75) document.body.classList.add("night");
+  drawBtn.addEventListener("click",()=>{
+    const randomIndex=Math.floor(Math.random()*cards.length);
+    cardImage.src=cards[randomIndex]; cardImage.style.display="block";
+    note.textContent="You've Received Today's Card"; note.style.display="block"; note.classList.add("is-active");
+    hint.textContent="Come back tomorrow for a new card."; hint.style.display="block";
+    localStorage.setItem(new Date().toDateString(),randomIndex);
+    drawBtn.style.display="none"; resetBtn.style.display="inline-block";
+    setBackground(randomIndex>=75);
   });
 
-  resetBtn.addEventListener("click", () => {
-    localStorage.removeItem(todayKey);
-    resetDailyCard();
-    dailyCard.style.display = "flex";
+  menuQuestion.addEventListener("click",()=>{
+    menu.style.display="none";
+    whisperBox.classList.remove("hidden");
   });
 
-  revealBtn.addEventListener("click", () => {
-    if (typeof questions !== "undefined" && questions.length > 0) {
-      const idx = Math.floor(Math.random() * questions.length);
-      questionText.textContent = questions[idx];
-      formWrapper.classList.remove("hidden");
-    }
+  // Firebase comments
+  submitBtn.addEventListener("click",()=>{
+    const name = nameInput.value||"Anonymous";
+    const message = messageInput.value.trim();
+    if(!message) return;
+    db.collection("whispers").add({name,message,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+    messageInput.value="";
   });
+
+  db.collection("whispers").orderBy("timestamp","asc").onSnapshot(snapshot=>{
+    commentsList.innerHTML="";
+    snapshot.forEach(doc=>{
+      const data=doc.data();
+      const div=document.createElement("div");
+      div.classList.add("comment-item");
+      div.innerHTML=`<div class="name">${data.name}</div><div class="message">${data.message}</div>`;
+      commentsList.appendChild(div);
+    });
+  });
+
 });
