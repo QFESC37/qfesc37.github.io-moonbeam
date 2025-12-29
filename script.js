@@ -212,98 +212,113 @@ document.addEventListener("DOMContentLoaded", () => {
   const enterBtn = document.getElementById("enterBtn");
   const menu = document.getElementById("menu");
   const menuCard = document.getElementById("menuCard");
-  const mainContent = document.getElementById("mainContent");
-  const backToMenu = document.getElementById("backToMenu");
+  const menuQuestion = document.getElementById("menuQuestion");
+  const dailyCard = document.getElementById("dailyCard");
+  const whisperBox = document.getElementById("whisperBox");
+  const backToMenuCard = document.getElementById("backToMenuCard");
+  const backToMenuWhisper = document.getElementById("backToMenuWhisper");
 
   const cardImage = document.getElementById("cardImage");
-  const note = document.getElementById("note");  
   const drawBtn = document.getElementById("drawBtn");
   const resetBtn = document.getElementById("resetBtn");
+  const note = document.getElementById("note");
   const hint = document.getElementById("hint");
-  const whisper = document.querySelector(".whisper");
-  const footer = document.querySelector(".footer");
+
+  const revealBtn = document.getElementById("revealBtn");
+  const questionText = document.getElementById("questionText");
+
+
+  const submitComment = document.getElementById("submitComment");
+  const nameInput = document.getElementById("nameInput");
+  const messageInput = document.getElementById("messageInput");
+  const commentsList = document.getElementById("commentsList");
 
   function setBackground(isMetaphor) {
-    if (isMetaphor) {
-      document.body.classList.add("night");
-    } else {
-      document.body.classList.remove("night");
-    }
+    if(isMetaphor) document.body.classList.add("night");
+    else document.body.classList.remove("night");
   }
 
-  function resetUI() {
+  function resetDailyCard() {
     cardImage.style.display = "none";
+    note.textContent = "Your card for today.";
     note.style.display = "none";
-    note.textContent = "";
-    hint.style.display = "none";
     hint.textContent = "";
+    hint.style.display = "none";
     drawBtn.style.display = "inline-block";
     resetBtn.style.display = "none";
     setBackground(false);
   }
 
-  const todayKey = new Date().toDateString();
-  const savedIndex = localStorage.getItem(todayKey);
 
-  menu.style.display = "none";
-  mainContent.style.display = "none";
+  menu.style.display = "flex";
+  dailyCard.style.display = "none";
+  whisperBox.style.display = "none";
 
   enterBtn.addEventListener("click", () => {
     intro.style.opacity = "0";
     intro.style.pointerEvents = "none";
-
-    setTimeout(() => {
+    setTimeout(()=> {
       intro.style.display = "none";
       menu.style.display = "flex";
-    }, 600);
+    },600);
   });
+
 
   menuCard.addEventListener("click", () => {
     menu.style.display = "none";
-    mainContent.style.display = "flex";
-    resetUI();
-
-    if (savedIndex !== null) {
-      const index = parseInt(savedIndex, 10);
-      cardImage.src = cards[index];
-      cardImage.style.display = "block";
-      note.textContent = "You've Received Today's Card";
-      note.style.display = "block";
-      note.classList.add("is-active");
-      hint.textContent = "Come back tomorrow for a new card.";
-      hint.style.display = "block";
-      drawBtn.style.display = "none";
-      resetBtn.style.display = "inline-block";
-      setBackground(index >= 75);
-    }
+    dailyCard.style.display = "flex";
+    resetDailyCard();
   });
 
-  backToMenu.addEventListener("click", () => {
-    mainContent.style.display = "none";
+  backToMenuCard.addEventListener("click", () => {
+    dailyCard.style.display = "none";
     menu.style.display = "flex";
-    setBackground(false);
   });
 
   drawBtn.addEventListener("click", () => {
-    const randomIndex = Math.floor(Math.random() * cards.length);
-    cardImage.src = cards[randomIndex];
+    const idx = Math.floor(Math.random() * cards.length);
+    cardImage.src = cards[idx];
     cardImage.style.display = "block";
     note.textContent = "You've Received Today's Card";
     note.style.display = "block";
-    note.classList.add("is-active");
     hint.textContent = "Come back tomorrow for a new card.";
     hint.style.display = "block";
-    localStorage.setItem(todayKey, randomIndex);
     drawBtn.style.display = "none";
     resetBtn.style.display = "inline-block";
-    setBackground(randomIndex >= 75);
+    setBackground(idx >= 75);
   });
 
-  resetBtn.addEventListener("click", () => {
-    localStorage.removeItem(todayKey);
-    resetUI();
-    note.classList.remove("is-active");
+  resetBtn.addEventListener("click", resetDailyCard);
+
+  resetDailyCard();
+  }); 
+
+
+  menuQuestion.addEventListener("click", () => {
+    menu.style.display = "none";
+    whisperBox.style.display = "block";
   });
 
-  resetUI();
+  backToMenuWhisper.addEventListener("click", () => {
+    whisperBox.style.display = "none";
+    menu.style.display = "flex";
+  });
+
+  revealBtn.addEventListener("click", () => {
+    const idx = Math.floor(Math.random() * questions.length);
+    questionText.textContent = questions[idx];
+  });
+
+
+  submitComment.addEventListener("click", () => {
+    const name = nameInput.value.trim() || "Anonymous";
+    const message = messageInput.value.trim();
+    if(message){
+      const div = document.createElement("div");
+      div.textContent = `${name}: ${message}`;
+      commentsList.prepend(div);
+      messageInput.value = "";
+      nameInput.value = "";
+    }
+  });
 });
