@@ -293,12 +293,14 @@ document.addEventListener("DOMContentLoaded", () => {
   
   menuCard.addEventListener("click", () => {
     menu.style.display = "none";
+    whisperBox.style.display = "none";
     dailyCard.style.display = "flex";
   });
 
   backToMenuCard.addEventListener("click", () => {
     dailyCard.style.display = "none";
     menu.style.display = "flex";
+    whisperBox.style.display = "none";    
     document.body.classList.remove("night");  
   });
 
