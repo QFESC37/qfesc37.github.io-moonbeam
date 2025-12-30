@@ -72,7 +72,7 @@ body.night #resetBtn:hover { background-color:#b59bc1; }
 .log-content {
   flex: 1;
   overflow-y: auto;
-  font-size: 0.85rem;
+  font-size: 0.65rem;
   line-height: 1.4;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
