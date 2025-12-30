@@ -242,6 +242,11 @@ document.addEventListener("DOMContentLoaded", () => {
     page.style.display = "flex";
   }
 
+  function testWriteDirect() {
+  const ss = SpreadsheetApp.openById("1XUI_zQZh52o-13pN_d5ZYghphrXUUykEq55LluY6BoY");
+  const sheet = ss.getSheetByName("Whispers");
+  sheet.appendRow([new Date(), "TEST QUESTION", "TEST ANSWER", "TEST NAME"]);
+}
   resetDailyCard();
   showPage(intro); 
   dailyCard.style.display = "none";
