@@ -227,11 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const revealBtn = document.getElementById("revealBtn");
   const questionText = document.getElementById("questionText");
 
-  revealBtn.addEventListener("click", () => {
-    const idx = Math.floor(Math.random() * question.length);
-    questionText.textContent = questions[idx];
-  });
-
   enterBtn.addEventListener("click", () => {
     intro.style.opacity = "0";
     intro.style.pointerEvents = "none";
@@ -239,6 +234,11 @@ document.addEventListener("DOMContentLoaded", () => {
       intro.style.display = "none";
       menu.style.display = "flex";
     }, 600);
+  });
+
+  revealBtn.addEventListener("click", () => {
+    const idx = Math.floor(Math.random() * question.length);
+    questionText.textContent = questions[idx];
   });
 
   menuCard.addEventListener("click", () => {
