@@ -233,31 +233,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const commentsList = document.getElementById("commentsList");
 
   const SCRIPT_URL = "https://script.google.com/macros/u/1/s/AKfycbyZOCs3fyBDLmFYj2mo9uj7GwugwUVv9JVDNvWXTglhKr5IYbpiLyocqNP216CpOZuFOA/exec";
-
+  
   let currentQuestion = "";
 
   function showPage(page) {
-    const pages = [menu, dailyCard, whisperBox];
+    const pages = [menu, dailyCard, whisperBox, intro];
     pages.forEach(p => p.style.display = "none");
     page.style.display = "flex";
   }
 
+  resetDailyCard();
+  showPage(intro); 
+  dailyCard.style.display = "none";
+  whisperBox.style.display = "none";
+  menu.style.display = "none";
+
   enterBtn.addEventListener("click", () => {
     intro.style.opacity = "0";
     intro.style.pointerEvents = "none";
+
     setTimeout(() => {
-      intro.style.display = "none";
       showPage(menu);
     }, 600);
   });
 
   menuCard.addEventListener("click", () => showPage(dailyCard));
-  menuQuestion.addEventListener("click", () => showPage(whisperBox));
   backToMenuCard.addEventListener("click", () => {
     document.body.classList.remove("night");
     showPage(menu);
   });
-  backToMenuWhisper.addEventListener("click", () => showPage(menu));
 
   function resetDailyCard() {
     cardImage.style.display = "none";
@@ -281,7 +285,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   resetBtn.addEventListener("click", resetDailyCard);
-  resetDailyCard();
+
+  menuQuestion.addEventListener("click", () => showPage(whisperBox));
+  backToMenuWhisper.addEventListener("click", () => showPage(menu));
 
   revealBtn.addEventListener("click", () => {
     const idx = Math.floor(Math.random() * questions.length);
@@ -290,7 +296,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const feedback = document.createElement("p");
     feedback.textContent = "Your question is ready!";
-    feedback.style.fontSize = "13px";
     feedback.style.color = "#555";
     feedback.style.marginTop = "6px";
     revealBtn.parentNode.insertBefore(feedback, revealBtn.nextSibling);
@@ -316,16 +321,19 @@ document.addEventListener("DOMContentLoaded", () => {
         name: name
       })
     }).then(() => {
-      const fb = document.createElement("p");
-      fb.textContent = "Your whisper has been sent!";
-      fb.style.fontSize = "13px";
-      fb.style.color = "#555";
-      fb.style.marginTop = "6px";
-      submitComment.parentNode.insertBefore(fb, submitComment.nextSibling);
-      setTimeout(() => fb.remove(), 3000);
-    }).catch(err => console.error("Error sending to Google Script:", err));
+      const feedback = document.createElement("p");
+      feedback.textContent = "Your whisper has been sent!";
+      feedback.style.fontSize = "13px";
+      feedback.style.color = "#555";
+      feedback.style.marginTop = "6px";
+      submitComment.parentNode.insertBefore(feedback, submitComment.nextSibling);
+      setTimeout(() => feedback.remove(), 3000);
+    }).catch(err => {
+      console.error("Error sending to Google Script:", err);
+    });
 
     messageInput.value = "";
     nameInput.value = "";
   });
+
 });
