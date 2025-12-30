@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const questionText = document.getElementById("questionText");
 
   revealBtn.addEventListener("click", () => {
-    const idx = Math.floor(Math.random() *question.length);
+    const idx = Math.floor(Math.random() * question.length);
     questionText.textContent = questions[idx];
   });
 
