@@ -14,7 +14,7 @@ body { font-family:'Raleway'; background:#ede6d8; color:#777; font-size:20px; tr
 
 #menu { min-height:100vh; display:none; justify-content:center; align-items:center; padding-top:80px; z-index:1; }
 .menu-grid { display:flex; flex-direction:column; gap:36px; align-items:center; }
-.menu-item { background:#e0dfdc; border-radius:16px; padding:12px 24px; display:flex; flex-direction:column; align-items:center; cursor:pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.menu-item { background:#d6c6ba; border-radius:16px; padding:12px 24px; display:flex; flex-direction:column; align-items:center; cursor:pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
 .menu-item img { width:90px; height:auto; margin-bottom:6px; }
 .menu-item span { font-size:14px; color:#555; }
 .menu-item:hover { transform:translateY(-4px); box-shadow:0 6px 12px rgba(0,0,0,0.15); background:#e0dfdc; }
@@ -32,6 +32,9 @@ button:hover { background-color:#ddd3c8; }
 .footer { margin-top:auto; font-size:14px; color:#999; text-align:center; padding-bottom:20px; }
 .sigil { margin-top:28px; font-size:18px; color:rgba(0,0,0,0.15); }
 .soft-divider { width:60%; border:none; border-top:1px solid rgba(0,0,0,0.15); margin:30px auto; }
+.hr { border: none; border-top: 1px #ddd; margin: 30px 0; }
+.whisper { margin-top: 24px; font-size: 13px; color: #999; line-height: 1.6; }
+.hint { margin-top: 6px; font-size: 13px; color: #999; font-style: italic; display: none; }
 
 :root { --night-title:#f2f2f2; --night-soft:#d6d6d6; --night-faint:rgba(255,255,255,0.35); }
 body.night #dailyCard h1, body.night #dailyCard p, body.night #dailyCard .back-btn { color: var(--night-title); }
