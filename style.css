@@ -29,9 +29,8 @@ button:hover { background-color:#ddd3c8; }
 #drawBtn { padding:5px 12px; font-size:14px; margin-bottom:40px; }
 #resetBtn { display:none; max-width:80px; width:100%; margin-top:-10px; margin-bottom:5vh; background-color:#bfab9b; }
 
-#dailyCard h1 { font-size: 20px; }
-#dailyCard .intro { font-size: 16px; }
-#note { font-size: 16px; }
+#dailyCard h1 { font-size: 22px; }
+#dailyCard .intro { font-size: 18px; }
 
 .footer { margin-top:auto; font-size:14px; color:#999; text-align:center; padding-bottom:20px; }
 .sigil { margin-top:28px; font-size:18px; color:rgba(0,0,0,0.15); }
