@@ -8,8 +8,8 @@ body { font-family:'Raleway'; background:#ede6d8; color:#777; font-size:20px; tr
 .page.active { display:flex; justify-content:center; padding:20px 0; min-height:100vh; }
 
 #intro { position:fixed; inset:0; background:linear-gradient(180deg,#ede6d8,#efe7dc); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px 20px; z-index:9999; transition: opacity 0.6s ease; }
-#intro h1 { font-size: 20px; color: #444; text-align: center; }
-.intro-text { font-size:16px; max-width:320px; }
+#intro h1 { font-size:20px; color:#444; text-align:center; }
+.intro-text { font-size:16px; line-height:1.6; max-width:320px; }
 #enterBtn { padding:8px 24px; font-size:14px; border-radius:24px; border:none; background-color:#bfab96; color:#555; cursor:pointer; }
 #enterBtn:hover { background-color:#ddd3c8; }
 
