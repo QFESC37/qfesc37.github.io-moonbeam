@@ -304,6 +304,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   submitComment.addEventListener("click", (e) => {
     e.preventDefault();
+
+    console.log("Submit clicked");
+    
     const name = nameInput.value.trim() || "Anonymous";
     const answer = messageInput.value.trim();
     if (!answer) return;
@@ -317,7 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
         question: currentQuestion || "(No question revealed)",
-        answer: answer,
+        answer: message,
         name: name
       })
     }).then(() => {
