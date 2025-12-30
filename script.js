@@ -227,6 +227,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const revealBtn = document.getElementById("revealBtn");
   const questionText = document.getElementById("questionText");
 
+  const submitComment = document.getElementById("submitComment");
+  const nameInput = document.getElementById("messageInput");
+  const commentsList = document.getElementById("commentsList");
+
   const SCRIPT_URL = "https://script.google.com/macros/u/1/s/AKfycbyZOCs3fyBDLmFYj2mo9uj7GwugwUVv9JVDNvWXTglhKr5IYbpiLyocqNP216CpOZuFOA/exec";
   
   let currentQuestion = "";
@@ -246,14 +250,19 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => feedback.remove(), 2500);
   });
 
-  const submitComment = document.getElementById("submitComment");
-  const nameInput = document.getElementById("nameInput");
-  const messageInput = document.getElementById("messageInput");
-
-  submitComment.addEventListener("click", () => {
+  submitComment.addEventListener("click", (e) => {
+    e.preventDefault();
     const name = nameInput.value.trim() || "Anonymous";
-    const answer = messageInput.value.trim();
-    if (!answer) return;
+    const message = messageInput.value.trim();
+    if (message){
+      const div = document.createElement("div");
+      div.textContent = `${name}: ${message}`;
+      commentsList.prepend(div);
+      messageInput.value = "";
+      nameInput.value = "";
+      alert("Thank you for your whisper.");
+  }
+});
 
     fetch(SCRIPT_URL, {
       method: "POST",
