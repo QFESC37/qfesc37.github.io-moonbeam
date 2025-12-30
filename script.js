@@ -99,6 +99,7 @@ const questions = [
   "What’s a smell that instantly makes you feel good?",
   "If you could nap anywhere right now, where would it be?",
   "Are you more of a blanket person or a pillow person?"
+  
 ];
 
 
@@ -237,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
  revealBtn.addEventListener("click", () => {
-    const idx = Math.floor(Math.random() * question.length);
+    const idx = Math.floor(Math.random() * questions.length);
     questionText.textContent = questions[idx]; 
   });
 
