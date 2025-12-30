@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
     intro.style.pointerEvents = "none";
     setTimeout(() => {
       intro.style.display = "none";
-      menu.style.display = "flex";
+      showPage(menu);
     }, 600);
   });
   
@@ -311,6 +311,11 @@ backToMenuWhisper.addEventListener("click", () => {
   function showPage(page) {
     const pages = [menu, dailyCard, whisperBox];
     pages.forEach(p => p.style.display = "none");
+
+    menu.style.display = "none";
+    dailyCard.style.display = "none";
+    whisperBox.style.display = "none";
+    
     page.style.display = "flex";
   }
     
