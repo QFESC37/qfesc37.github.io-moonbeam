@@ -187,7 +187,7 @@ body.night #resetBtn:hover { background-color:#d1c7d6; }
 
 .message-text {
   font-size: 12px;
-  line-height: 1.75;
+  line-height: 1;
   color: #555;
   text-align: center;
   white-space: pre-line;
@@ -195,7 +195,7 @@ body.night #resetBtn:hover { background-color:#d1c7d6; }
 
 .coming-soon {
   font-size: 12px;
-  line-height: 1.7;
+  line-height: 1;
   color: #777;
   text-align: center;
   white-space: pre-line;
