@@ -422,3 +422,21 @@ openMessageBtn.addEventListener("click", () => {
     openMessageBtn.textContent = "Open New Year Message";
   }
 });
+
+document.querySelectorAll(".festival-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const box = btn.nextElementSibling;
+
+    const isOpen = !box.classList.contains("hidden");
+
+    document.querySelectorAll(".messageBox").forEach(b => {
+      b.classList.add("hidden");
+      b.previousElementSibling.textContent = "Open Message";
+    });
+
+    if (!isOpen) {
+      box.classList.remove("hidden");
+      btn.textContent = "Close Message";
+    }
+  });
+});
