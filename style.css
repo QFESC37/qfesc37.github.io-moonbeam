@@ -179,26 +179,28 @@ body.night #resetBtn:hover { background-color:#d1c7d6; }
 
 .message-box {
   margin-top: 26px;
-  padding: 26px 22px;
+  padding: 20px 24px;
   border-radius: 16px;
   background-color: #f2ede4;
   animation: fadeIn 0.6s ease;
 }
 
 .message-text {
-  font-size: 12px;
-  line-height: 1;
+  font-size: 14px;
+  line-height: 1.45;
   color: #555;
   text-align: center;
   white-space: pre-line;
+  margin: 0,
 }
 
 .coming-soon {
-  font-size: 12px;
-  line-height: 1;
+  font-size: 14px;
+  line-height: 1.45;
   color: #777;
   text-align: center;
   white-space: pre-line;
+  margin: 0;
   font-style: italic;
 }
 
