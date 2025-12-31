@@ -17,7 +17,7 @@ body { font-family:'Raleway'; background:#ede6d8; color:#777; font-size:20px; tr
 .menu-grid { display:flex; flex-direction:column; gap:36px; align-items:center; }
 .menu-item { background:#b09f94; border-radius:16px; padding:12px 24px; display:flex; flex-direction:column; align-items:center; cursor:pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
 .menu-item img { width:90px; height:auto; margin-bottom:6px; }
-.menu-item span { font-size:14px; color:#777; }
+.menu-item span { font-size:14px; color:#666; }
 .menu-item:hover { transform:translateY(-4px); box-shadow:0 6px 12px rgba(0,0,0,0.15); background:#e0dfdc; }
 .menu-item:hover span { color:#333; }
 .menu-item:last-child { margin-bottom:120px; }
