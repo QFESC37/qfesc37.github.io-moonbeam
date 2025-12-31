@@ -243,14 +243,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const openMessageBtn = document.getElementById("openMessageBtn");
   const messageBox = document.getElementById("messageBox");
-
+  
+  const pages = [menu, dailyCard, whisperBox, festival];  
   
   let currentQuestion = "";
 
-  function showPage(page) {
-    const pages = [menu, dailyCard, whisperBox, festival];
-    pages.forEach(p => { p.style.display = "none"; p.style.pointerEvents = "auto"; p.style.opacity = "1"; });
-    page.style.display = "flex";
+  function showPage(target) {
+    pages.forEach(p => p.classList.remove("active"));
+    target.classList.add("active");
   }
 
   resetDailyCard();
