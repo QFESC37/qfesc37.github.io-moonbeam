@@ -241,8 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const logModal = document.getElementById("logModal");
   const logContent = document.getElementById("logContent");
 
-  const messageBox = document.getElementById("messageBox");
-
   
   let currentQuestion = "";
 
@@ -429,13 +427,8 @@ document.querySelectorAll(".festival-btn").forEach(btn => {
 
     const isOpen = !box.classList.contains("hidden");
 
-    document.querySelectorAll(".messageBox").forEach(b => {
-      b.classList.add("hidden");
-    });
-
-    document.querySelectorAll(".festival-btn").forEach(b => {
-      b.textContent = "Open Letter";
-    });
+    document.querySelectorAll(".messageBox").forEach(b => b.classList.add("hidden"));
+    document.querySelectorAll(".festival-btn").forEach(b => b.textContent = "Open Letter");
 
     if (!isOpen) {
       box.classList.remove("hidden");
