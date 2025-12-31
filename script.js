@@ -420,19 +420,20 @@ openMessageBtn.addEventListener("click", () => {
   }
 });
 
-document.querySelectorAll(".festival-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const wrap = btn.parentElement;
-    const box = wrap.querySelector(".messageBox");
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".festival-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const wrap = btn.parentElement;
+      const box = wrap.querySelector(".messageBox");
+      const isOpen = !box.classList.contains("hidden");
 
-    const isOpen = !box.classList.contains("hidden");
+      document.querySelectorAll(".messageBox").forEach(b => b.classList.add("hidden"));
+      document.querySelectorAll(".festival-btn").forEach(b => b.textContent = "Open Letter");
 
-    document.querySelectorAll(".messageBox").forEach(b => b.classList.add("hidden"));
-    document.querySelectorAll(".festival-btn").forEach(b => b.textContent = "Open Letter");
-
-    if (!isOpen) {
-      box.classList.remove("hidden");
-      btn.textContent = "Close Letter";
-    }
+      if (!isOpen) {
+        box.classList.remove("hidden");
+        btn.textContent = "Fold Letter";
+      }
+    });
   });
 });
