@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentQuestion = "";
 
   function showPage(page) {
-    const pages = [intro, menu, dailyCard, whisperBox, festival-section];
+    const pages = [menu, dailyCard, whisperBox, festival-section, intro];
     pages.forEach(p => p.style.display = "none");
     page.style.display = "flex";
   }
@@ -261,6 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuCard.addEventListener("click", () => showPage(dailyCard));
   menuQuestion.addEventListener("click", () => showPage(whisperBox));
+  menuFestival.addEventListener("click", () => showPage(festive-section));
   
   backToMenuCard.addEventListener("click", () => {
     document.body.classList.remove("night");
