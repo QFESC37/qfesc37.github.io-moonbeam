@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showPage(page) {
     const pages = [intro, menu, dailyCard, whisperBox, festival];
-    pages.forEach(p => { p.style.display = "none" p.style.pointerEvents = "auto"; p.style.opaicty = "1"; });
+    pages.forEach(p => { p.style.display = "none"; p.style.opaicty = "1"; });
     page.style.display = "flex";
   }
 
