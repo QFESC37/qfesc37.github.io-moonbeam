@@ -106,10 +106,16 @@ body.night #resetBtn:hover { background-color:#b59bc1; }
 .whisper-feedback.show { opacity: 1; }
 
 .festival {
+  font-size: 18px;
   max-width: 640px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 32px 20px;
+  display: flex;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: content;
 }
 
 .toggle-btn {
