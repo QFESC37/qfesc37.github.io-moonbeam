@@ -119,22 +119,6 @@ body.night #resetBtn:hover { background-color:#d1c7d6; }
   text-align: center;
 }
 
-.festival-title {
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.festival-title::after {
-  content: "✦";
-  display: block;
-  margin-top: 10px;
-  font-size: 14px;
-  opacity: 0.6;
-}
-
 .festival-list {
   width: 100%;
   max-width: 550px;
