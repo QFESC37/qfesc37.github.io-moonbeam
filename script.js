@@ -425,18 +425,22 @@ openMessageBtn.addEventListener("click", () => {
 
 document.querySelectorAll(".festival-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    const box = btn.nextElementSibling;
+    const wrap = btn.parentElement;
+    const box = wrap.querySelector(".messageBox");
 
     const isOpen = !box.classList.contains("hidden");
 
     document.querySelectorAll(".messageBox").forEach(b => {
       b.classList.add("hidden");
-      b.previousElementSibling.textContent = "Open Message";
+    });
+
+    document.querySelectorAll(".festival-btn").forEach(b => {
+      b.textContent = "Open Letter";
     });
 
     if (!isOpen) {
       box.classList.remove("hidden");
-      btn.textContent = "Close Message";
+      btn.textContent = "Close Letter";
     }
   });
 });
