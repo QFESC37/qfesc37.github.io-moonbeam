@@ -234,6 +234,50 @@ document.addEventListener("DOMContentLoaded", () => {
   const nameInput = document.getElementById("nameInput");
   const messageInput = document.getElementById("messageInput");
   const commentsList = document.getElementById("commentsList");
+  
+  let currentQuestion = "";
+
+  resetDailyCard();
+  showPage(intro);
+  document.body.style.pointerEvents = "auto";
+
+   function showPage(target) {
+    pages.forEach(p => p.classList.remove("active"));
+    target.classList.add("active");
+  }
+
+  showPage(menu);j
+  intro.style.display = "flex";
+
+  enterBtn.addEventListener("click", () => {
+    intro.style.opacity = "0";
+    setTimeout(() => {
+      intro.style.display = "none";
+      showPage(menu);
+    }, 600);
+  });
+
+  menuCard.addEventListener("click", () => showPage(dailyCard));
+  menuQuestion.addEventListener("click", () => showPage(whisperBox));
+  menuFestival.addEventListener("click", () => showPage(festival));
+
+  backToMenuCard.addEventListener("click", () => {
+    document.body.classList.remove("night");
+    showPage(menu);
+  });
+
+  backToMenuWhisper.addEventListener("click", () => showPage(menu));
+  backToMenuFestival.addEventListener("click", () => showPage(menu));
+
+  const openMessageBtn = document.getElementById("openMessageBtn");
+  const messageBox = document.getElementById("messageBox");
+  let isOpen = false;
+
+  openMessageBtn.addEventListener("click", () => {
+    isOpen = !isOpen;
+    messageBox.classList.toggle("hidden", !isOpen);
+    openMessageBtn.textContent = isOpen ? "Fold the Letter" : "Open New Year Message";
+  });
 
   const openLogBtn = document.getElementById("openLogBtn");
   const closeLogBtn = document.getElementById("closeLogBtn");
@@ -241,44 +285,44 @@ document.addEventListener("DOMContentLoaded", () => {
   const logModal = document.getElementById("logModal");
   const logContent = document.getElementById("logContent");
 
-  const openMessageBtn = document.getElementById("openMessageBtn");
-  const messageBox = document.getElementById("messageBox");
+  function renderLogs() {
+    const logs = JSON.parse(localStorage.getItem("whisperBoxLogs")) || [];
+    logContent.innerHTML = "";
 
-  
-  let currentQuestion = "";
+    if (!logs.length) {
+      logContent.innerHTML = "<p style='text-align:center;color:#999;'>No whispers yet.</p>";
+      return;
+    }
 
-  function showPage(page) {
-    const pages = [menu, dailyCard, whisperBox, festival];
-    pages.forEach(p => { p.style.display = "none"; p.style.pointerEvents = "auto"; p.style.opacity = "1"; });
-    page.style.display = "flex";
+    logs.slice().reverse().forEach(log => {
+      const div = document.createElement("div");
+      div.className = "log-item";
+      div.innerHTML = `
+        <time>${new Date(log.timestamp).toLocaleString()}</time>
+        <div class="log-question">“${log.question}”</div>
+        <div class="log-answer"><strong>${log.name}:</strong> ${log.answer}</div>
+      `;
+      logContent.appendChild(div);
+    });
   }
 
-  resetDailyCard();
-  showPage(intro);
-  document.body.style.pointerEvents = "auto";
-
-  enterBtn.addEventListener("click", () => {
-    intro.style.opacity = "0";
-    intro.style.pointerEvents = "none";
-    intro.style.display = "none";
-    setTimeout(() => showPage(menu), 600);
+  openLogBtn.addEventListener("click", () => {
+    renderLogs();
+    logModal.style.display = "flex";
   });
 
-  menuCard.addEventListener("click", () => showPage(dailyCard));
-  menuQuestion.addEventListener("click", () => showPage(whisperBox));
-  menuFestival.addEventListener("click", () => showPage(festival));
-  
-  backToMenuCard.addEventListener("click", () => {
-    document.body.classList.remove("night");
-    showPage(menu);
+  closeLogBtn.addEventListener("click", () => {
+    logModal.style.display = "none";
   });
 
-  backToMenuWhisper.addEventListener("click", () => showPage(menu));
-
-  backToMenuFestival.addEventListener("click", () => {
-  showPage(menu);
+  clearLogBtn.addEventListener("click", () => {
+    if (confirm("Clear all whispers?")) {
+      localStorage.removeItem("whisperBoxLogs");
+      renderLogs();
+    }
+  });
 });
-  
+
   function resetDailyCard() {
     cardImage.style.display = "none";
     note.textContent = "";
@@ -369,56 +413,5 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.body.appendChild(el);
     setTimeout(() => el.remove(), 2200);
-  }
-});
-
-  function renderLogs() {
-    const logs = JSON.parse(localStorage.getItem("whisperBoxLogs")) || [];
-    logContent.innerHTML = "";
-
-  if (logs.length === 0) {
-    logContent.innerHTML = "<p style='text-align:center;color:#999;'>No whispers yet.</p>";
-    return;
-  }
-
-  logs.slice().reverse().forEach(log => {
-    const div = document.createElement("div");
-    div.className = "log-item";
-    div.innerHTML = `
-      <time>${new Date(log.timestamp).toLocaleString()}</time>
-      <div class="log-question">“${log.question}”</div>
-      <div class="log-answer"><strong>${log.name}:</strong> ${log.answer}</div>
-    `;
-    logContent.appendChild(div);
-  });
-}
-
-openLogBtn.addEventListener("click", () => {
-  renderLogs();
-  logModal.style.display = "flex";
-});
-
-closeLogBtn.addEventListener("click", () => {
-  logModal.style.display = "none";
-});
-
-clearLogBtn.addEventListener("click", () => {
-  if (confirm("Clear all whispers?")) {
-    localStorage.removeItem("whisperBoxLogs");
-    renderLogs();
-  }
-});
-
-let isOpen = false;
-
-openMessageBtn.addEventListener("click", () => {
-  isOpen = !isOpen;
-
-  if (isOpen) {
-    messageBox.classList.remove("hidden");
-    openMessageBtn.textContent = "Fold the Letter";
-  } else {
-    messageBox.classList.add("hidden");
-    openMessageBtn.textContent = "Open New Year Message";
   }
 });
