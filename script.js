@@ -246,12 +246,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showPage(page) {
     const pages = [menu, dailyCard, whisperBox, festival-section, intro];
-    pages.forEach(p => p.style.display = "none");
+    pages.forEach(p => { p.style.display = "none" p.style.pointerEvents = "auto"; p.style.opaicty = "1"; });
     page.style.display = "flex";
   }
 
   resetDailyCard();
   showPage(intro);
+  document.body.style.pointerEvents = "auto";
 
   enterBtn.addEventListener("click", () => {
     intro.style.opacity = "0";
